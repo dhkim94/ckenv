@@ -16,6 +16,7 @@ var (
 	conf *viper.Viper
 )
 
+// env 를 초기화 한다.
 func Init(confFileName string) bool {
 	confDir := filepath.Dir(confFileName)
 	baseName := strings.Split(filepath.Base(confFileName), ".")
@@ -57,14 +58,18 @@ func Init(confFileName string) bool {
 	return true
 }
 
+// Stdout 으로 찍히는 로그를 설정 한다.
+// Init 하지 않고 stdout 으로 찍히는 로그만 필요할때 주로 사용 된다.
 func SetStdOutLogger(level string)  {
 	clog = cklog.NewLogger(level, "stdout", "")
 }
 
+// env 에 만들어진 로그를 구한다.
 func GetLogger() *cklog.Cklogger {
 	return clog
 }
 
+// 설정된 전체 환경을 구한다.
 func GetConf() *viper.Viper {
 	return conf
 }
