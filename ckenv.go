@@ -57,6 +57,10 @@ func Init(confFileName string) bool {
 	return true
 }
 
+func SetStdOutLogger(level string)  {
+	clog = cklog.NewLogger(level, "stdout", "")
+}
+
 func GetLogger() *cklog.Cklogger {
 	return clog
 }
